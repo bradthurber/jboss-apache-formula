@@ -3,6 +3,20 @@
 include:
   - apache
 
+{{ apache.vhostdir }}:
+  file.directory:
+    - require:
+      - pkg: apache
+    - watch_in:
+      - service: apache
+      
+/etc/httpd/conf.modules.d:
+  file.directory:
+    - require:
+      - pkg: apache
+    - watch_in:
+      - service: apache      
+  
 {{ apache.configfile }}:
   file.managed:
     - template: jinja
@@ -13,12 +27,7 @@ include:
     - watch_in:
       - service: apache
 
-{{ apache.vhostdir }}:
-  file.directory:
-    - require:
-      - pkg: apache
-    - watch_in:
-      - service: apache
+
       
 include_vhostd_config_dir_in_apache_config:
   file.managed:
