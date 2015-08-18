@@ -1,4 +1,3 @@
-{%- from "jbossapache/map.jinja" import jbossapache with context %}
 
 ## make selinux happy - if it is enabled
  

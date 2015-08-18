@@ -1,6 +1,3 @@
-# This file is managed by Salt 
-
-{%- from "jbossapache/map.jinja" import jbossapache with context %}
 
 # Co​mment out mod_proxy_balancer in /etc/httpd/conf/httpd.conf so it looks like this:
 # #LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
