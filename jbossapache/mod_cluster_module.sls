@@ -2,13 +2,14 @@
 include:
   - apache
 
+#### TODO: REMOVE THIS SECTION - This is handled in apache formula pillar config
 # Co​mment out mod_proxy_balancer in /etc/httpd/conf/httpd.conf so it looks like this:
 # #LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
-comment_out_proxy_balancer_module:
-  file.comment:
-    - name: /etc/httpd/conf/httpd.conf
-    - char: '#'
-    - regex: ^LoadModule proxy_balancer_module
+#comment_out_proxy_balancer_module:
+#  file.comment:
+#    - name: /etc/httpd/conf/httpd.conf
+#    - char: '#'
+#    - regex: ^LoadModule proxy_balancer_module
 
 # copy the mod_cluster *.so files to the apache server
 copy_mod_cluster_natives:
