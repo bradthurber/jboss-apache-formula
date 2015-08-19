@@ -36,6 +36,6 @@ add_managed_mod_cluster_configuration_file_to_apache_conf:
     - source: salt://jbossapache/files/mod_cluster_config.conf
     - template: jinja
     - watch_in:
-      - service: apache
+      - module: apache-restart
     - user: root
     
