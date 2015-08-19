@@ -50,11 +50,11 @@ include:
     - watch_in:
       - service: apache
       
-/etc/httpd/conf.modules.d/00-cgi.conf:
+/etc/httpd/conf.modules.d/01-cgi.conf:
   file.managed:
     - template: jinja
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-cgi.conf
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/01-cgi.conf
       - replace: false
       - require:
       - pkg: apache
