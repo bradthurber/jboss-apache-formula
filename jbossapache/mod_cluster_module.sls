@@ -16,7 +16,7 @@ include:
 #### but alas modules.sls fails to load apache because module is enabled
 comment_out_proxy_balancer_module:
     cmd.run:
-      - name: find /etc/httpd/ -name '*.conf' -type f -exec sed -i -e 's/\(^LoadModule.proxy_balancer_module\)/#\1/g' {} \;:
+      - name: find /etc/httpd/ -name '*.conf' -type f -exec sed -i -e 's/\(^LoadModule.proxy_balancer_module\)/#\1/g' {} \;
       - onlyif: httpd -M 2> /dev/null | grep proxy_balancer_module
       - order: 225
       - require:
