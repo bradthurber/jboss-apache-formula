@@ -36,7 +36,7 @@ copy_mod_cluster_natives:
 # place mod_cluster.conf file on server
 configure_apache_to_load_the_mod_cluster_module:
   file.managed:
-    - name: /etc/httpd/conf.d/mod_cluster.conf
+    - name: /etc/httpd/conf.modules.d/01-mod_cluster.conf
     - source: salt://jbossapache/files/mod_cluster.conf
     - user: root
     - group: root
