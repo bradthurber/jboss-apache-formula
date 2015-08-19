@@ -65,7 +65,7 @@ include:
   file.managed:
     - template: jinja
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/apache22.config.jinja
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/apache.config.jinja
     - require:
       - pkg: apache
     - watch_in:
