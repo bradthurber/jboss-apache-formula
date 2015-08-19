@@ -20,11 +20,11 @@ include:
 /etc/httpd/conf.modules.d/00-base.conf:
   file.managed:
     - replace: false
+    - require:
+      - file: /etc/httpd/conf.modules.d
+      - pkg: apache
     - source:
       - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-base.conf
-      - require:
-      - pkg: apache
-
     - template: jinja
     - watch_in:
       - service: apache   
@@ -32,10 +32,11 @@ include:
 /etc/httpd/conf.modules.d/00-dav.conf:
   file.managed:
     - replace: false
+    - require:
+      - file: /etc/httpd/conf.modules.d
+      - pkg: apache
     - source:
       - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-dav.conf
-      - require:
-      - pkg: apache
     - template: jinja    
     - watch_in:
       - service: apache
@@ -43,22 +44,24 @@ include:
 /etc/httpd/conf.modules.d/00-proxy.conf:
   file.managed:
     - replace: false
+    - require:
+      - file: /etc/httpd/conf.modules.d
+      - pkg: apache
     - source:
       - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-proxy.conf
-      - require:
-      - pkg: apache
     - template: jinja    
     - watch_in:
       - service: apache
       
 /etc/httpd/conf.modules.d/01-cgi.conf:
   file.managed:
+    - replace: false
+    - require:
+      - file: /etc/httpd/conf.modules.d
+      - pkg: apache
     - source:
       - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/01-cgi.conf
-      - require:
-      - pkg: apache
-    - replace: false
-    - template: jinja
+    - template: jinja    
     - watch_in:
       - service: apache
       
