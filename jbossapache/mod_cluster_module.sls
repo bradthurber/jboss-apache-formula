@@ -11,6 +11,19 @@ include:
 #    - char: '#'
 #    - regex: ^LoadModule proxy_balancer_module
 
+
+#### TODO We shouldn't have to do this here as modules.sls should handle it
+#### but alas modules.sls fails to load apache because module is enabled
+comment_out_proxy_balancer_module:
+    cmd.run:
+      - name: find /etc/httpd/ -name '*.conf' -type f -exec sed -i -e 's/\(^LoadModule.proxy_balancer_module\)/#\1/g' {} \;:
+      - onlyif: httpd -M 2> /dev/null | grep proxy_balancer_module
+      - order: 225
+      - require:
+        - pkg: apache
+      - watch_in:
+        - module: apache-restart
+
 # copy the mod_cluster *.so files to the apache server
 copy_mod_cluster_natives:
   file.recurse:
@@ -31,8 +44,7 @@ configure_apache_to_load_the_mod_cluster_module:
     - template: jinja
     - require:
       - file: copy_mod_cluster_natives
-#TODO: REMOVE this once section "comment_out_proxy_balancer_module" is removed above
-#      - file: comment_out_proxy_balancer_module
+      - file: comment_out_proxy_balancer_module
     - watch_in:
       - service: apache
     
