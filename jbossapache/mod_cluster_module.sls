@@ -44,7 +44,7 @@ configure_apache_to_load_the_mod_cluster_module:
     - template: jinja
     - require:
       - file: copy_mod_cluster_natives
-      - file: comment_out_proxy_balancer_module
+      - cmd: comment_out_proxy_balancer_module
     - watch_in:
       - service: apache
     
