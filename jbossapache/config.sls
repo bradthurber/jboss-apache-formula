@@ -95,3 +95,28 @@ include_vhostd_config_dir_in_apache_config:
     - watch_in:
       - service: apache
 
+name_virtual_host_config:
+  file.managed:
+    - group: root
+    - mode: 644
+    - name: {{ apache.confdir }}/name_virtual_host.conf
+    - require:
+      - pkg: apache
+    - source: salt://jbossapache/files/name_virtual_host.conf.jinja
+    - template: jinja
+    - watch_in:
+      - service: apache
+    - user: root  
+    
+set_apache_servername:
+  file.managed:
+    - group: root
+    - mode: 644
+    - name: {{ apache.confdir }}/servername.conf
+    - require:
+      - pkg: apache
+    - source: salt://jbossapache/files/servername.conf.jinja
+    - template: jinja
+    - watch_in:
+      - service: apache
+    - user: root  
