@@ -1,3 +1,7 @@
+{%- from "apache/map.jinja" import apache with context %}
+
+include:
+  - apache
 
 ## make selinux happy - if it is enabled
  
@@ -28,7 +32,7 @@ add_managed_mod_cluster_configuration_file_to_apache_conf:
   file.managed:
     - group: root
     - mode: 644
-    - name: /etc/httpd/conf.d/mod_cluster_config.conf
+    - name: {{ apache.confdir }}/mod_cluster_config.conf
     - require:
       - pkg: apache
       - cmd: semanage_mod_cluster_tcp_6666
