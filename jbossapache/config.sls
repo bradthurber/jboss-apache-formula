@@ -24,7 +24,7 @@ include:
       - file: /etc/httpd/conf.modules.d
       - pkg: apache
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-base.conf
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/conf.modules.d/00-base.conf
     - template: jinja
     - watch_in:
       - service: apache   
@@ -36,7 +36,7 @@ include:
       - file: /etc/httpd/conf.modules.d
       - pkg: apache
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-dav.conf
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/conf.modules.d/00-dav.conf
     - template: jinja    
     - watch_in:
       - service: apache
@@ -48,7 +48,7 @@ include:
       - file: /etc/httpd/conf.modules.d
       - pkg: apache
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/00-proxy.conf
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/conf.modules.d/00-proxy.conf
     - template: jinja    
     - watch_in:
       - service: apache
@@ -60,7 +60,7 @@ include:
       - file: /etc/httpd/conf.modules.d
       - pkg: apache
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/conf.modules.d/01-cgi.conf
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/conf.modules.d/01-cgi.conf
     - template: jinja    
     - watch_in:
       - service: apache
@@ -69,7 +69,7 @@ include:
   file.managed:
     - template: jinja
     - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/2.2/apache.config.jinja
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/apache.config.jinja
     - require:
       - pkg: apache
     - watch_in:
