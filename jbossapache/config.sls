@@ -64,21 +64,9 @@ include:
     - template: jinja    
     - watch_in:
       - service: apache
-      
-{{ apache.configfile }}:
-  file.managed:
-    - template: jinja
-    - source:
-      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/apache.config.jinja
-    - require:
-      - pkg: apache
-    - watch_in:
-      - service: apache
-      
+            
 include_vhostd_config_dir_in_apache_config:
   file.managed:
-    - group: root
-    - mode: 644
     - name: {{ apache.confdir }}/z_include_vhostd.conf
     - require:
       - pkg: apache
@@ -86,7 +74,6 @@ include_vhostd_config_dir_in_apache_config:
     - template: jinja
     - watch_in:
       - service: apache
-    - user: root
 
 /etc/httpd/conf.d/welcome.conf:
   file.absent:
@@ -97,21 +84,16 @@ include_vhostd_config_dir_in_apache_config:
 
 name_virtual_host_config:
   file.managed:
-    - group: root
-    - mode: 644
     - name: {{ apache.confdir }}/name_virtual_host.conf
     - require:
       - pkg: apache
     - source: salt://jbossapache/files/name_virtual_host.conf.jinja
     - template: jinja
     - watch_in:
-      - service: apache
-    - user: root  
+      - service: apache  
     
 set_apache_servername:
   file.managed:
-    - group: root
-    - mode: 644
     - name: {{ apache.confdir }}/servername.conf
     - require:
       - pkg: apache
@@ -119,4 +101,14 @@ set_apache_servername:
     - template: jinja
     - watch_in:
       - service: apache
-    - user: root  
+
+{{ apache.configfile }}:
+  file.managed:
+    - template: jinja
+    - source:
+      - salt://jbossapache/files/{{ salt['grains.get']('os_family') }}/{{ apache.version }}/apache.config.jinja
+    - require:
+      - pkg: apache
+    - watch_in:
+      - service: apache    
+    
