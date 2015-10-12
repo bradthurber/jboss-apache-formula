@@ -75,12 +75,13 @@ include_vhostd_config_dir_in_apache_config:
     - watch_in:
       - service: apache
 
-/etc/httpd/conf.d/welcome.conf:
-  file.absent:
-    - require:
-      - pkg: apache
-    - watch_in:
-      - service: apache
+## TODO: MOVE This section elsewhere so we have an option to keep it
+#/etc/httpd/conf.d/welcome.conf:
+#  file.absent:
+#    - require:
+#      - pkg: apache
+#    - watch_in:
+#      - service: apache
 
 name_virtual_host_config:
   file.managed:
