@@ -45,3 +45,8 @@ This should be run on all apache servers in the cluster. It should not be run on
 jboss server unless it is also acting as an apache server.
 Copies the mod_cluster apache module files to the httpd server modules directory
 Creates a conf.d file to load the modules
+
+``jbossapache.selinx_config``
+------------
+
+Set all the selinux stuff for apache
