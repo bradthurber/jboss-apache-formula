@@ -5,4 +5,4 @@ jbossapache:
     maxcontext: 200
     maxnode: 40
     maxhost: 20
-    memmangerfile: /var/cache/mod_cluster
+	memmanagerfile: /var/cache/mod_cluster

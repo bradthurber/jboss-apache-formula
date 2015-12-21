@@ -4,7 +4,7 @@
 {## Start with defaults from defaults.yaml ##}
 {% import_yaml "jbossapache/defaults.yaml" as default_settings %}
 
-{## Merge in jbossapache:lookup pillar ##}
+{## Merge in jbossapache pillar ##}
 {% set jbossapache_settings = salt['pillar.get'](
     'jbossapache',
     default=default_settings.jbossapache,
