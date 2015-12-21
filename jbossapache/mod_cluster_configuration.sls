@@ -13,7 +13,7 @@ add_managed_mod_cluster_configuration_file_to_apache_conf:
       - pkg: apache
       - cmd: semanage_mod_cluster_tcp_6666
       - cmd: semanage_mod_cluster_udp_23364
-    - source: salt://jbossapache/files/mod_cluster_config.conf
+    - source: salt://jbossapache/files/mod_cluster_config.conf.jinja
     - template: jinja
     - watch_in:
       - module: apache-restart
