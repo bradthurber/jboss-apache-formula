@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with defaults from defaults.yaml ##}
+{% import_yaml "jbossapache/defaults.yaml" as default_settings %}
+
+{## Merge in jbossapache:lookup pillar ##}
+{% set jbossapache_settings = salt['pillar.get'](
+    'jbossapache',
+    default=default_settings.jbossapache,
+    merge=True)
+%}

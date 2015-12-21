@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+jbossapache:
+  mod_cluster:
+    maxcontext: 200
+    maxnode: 40
+    maxhost: 20
+    memmangerfile: /var/cache/mod_cluster
