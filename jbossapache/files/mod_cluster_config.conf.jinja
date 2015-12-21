@@ -5,10 +5,12 @@
 # Any edits may be overwritten #
 ################################
 
-Maxcontext {{ mod_cluster_settings.maxcontext }}
-Maxnode {{ mod_cluster_settings.mod_cluster.maxnode }}
-Maxhost {{ mod_cluster_settings.mod_cluster.maxhost }}
-MemManagerFile {{ mod_cluster_settings.memmanagerfile }}
+#Maxcontext {{ mod_cluster_settings.maxcontext }}
+#Maxnode {{ mod_cluster_settings.mod_cluster.maxnode }}
+#Maxhost {{ mod_cluster_settings.mod_cluster.maxhost }}
+#MemManagerFile {{ mod_cluster_settings.memmanagerfile }}
+MemManagerFile /var/cache/mod_cluster
+
 
 {%- set minion_jboss_environment_name = grains['environment'] %}
 <IfModule manager_module>
