@@ -1,0 +1,7 @@
+jbossapache:
+  # to overwrite mod_cluster settings from defaults.yaml
+  mod_cluster:
+    maxcontext: 200
+    maxnode: 40
+    maxhost: 20
+    memmanagerfile: /var/cache/mod_cluster

@@ -2,7 +2,7 @@
 # vim: ft=yaml
 jbossapache:
   mod_cluster:
-    maxcontext: 200
-    maxnode: 40
-    maxhost: 20
+    maxcontext: 100
+    maxnode: 20
+    maxhost: 10
     memmanagerfile: /var/cache/mod_cluster
