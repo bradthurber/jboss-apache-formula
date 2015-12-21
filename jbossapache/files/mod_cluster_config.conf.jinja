@@ -1,13 +1,14 @@
 {% from "jbossapache/map.jinja" import jbossapache_settings with context %}
+{% set mod_cluster_settings = jbossapache_settings.mod_cluster %}
 ################################
 # This file is managed by SALT #
 # Any edits may be overwritten #
 ################################
 
-MemManagerFile {{ jbossapache_settings.mod_cluster.memmanagerfile }}
-Maxcontext {{ jbossapache_settings.mod_cluster.maxcontext }}
-Maxnode {{ jbossapache_settings.mod_cluster.maxnode }}
-Maxhost {{ jbossapache_settings.mod_cluster.maxhost }}
+Maxcontext {{ mod_cluster_settings.maxcontext }}
+Maxnode {{ mod_cluster_settings.mod_cluster.maxnode }}
+Maxhost {{ mod_cluster_settings.mod_cluster.maxhost }}
+MemManagerFile {{ mod_cluster_settings.memmanagerfile }}
 
 {%- set minion_jboss_environment_name = grains['environment'] %}
 <IfModule manager_module>
