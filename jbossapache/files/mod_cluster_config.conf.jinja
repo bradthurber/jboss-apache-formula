@@ -6,8 +6,8 @@
 ################################
 
 Maxcontext {{ mod_cluster_settings.maxcontext }}
-Maxnode {{ mod_cluster_settings.mod_cluster.maxnode }}
-Maxhost {{ mod_cluster_settings.mod_cluster.maxhost }}
+Maxnode {{ mod_cluster_settings.maxnode }}
+Maxhost {{ mod_cluster_settings.maxhost }}
 MemManagerFile {{ mod_cluster_settings.memmanagerfile }}
 
 {%- set minion_jboss_environment_name = grains['environment'] %}
